@@ -121,21 +121,7 @@ export const Footer = () => {
             </p>
           </div>
 
-          {/* Özel Alt Mesaj */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.9 }}
-            className="pt-8"
-          >
-            <div className="inline-block px-8 py-4 rounded-full bg-gradient-to-r from-[#2a1520] to-[#1a0a0f] border border-[#4a2838] shadow-inner">
-              <p className="text-xl text-[#d4af37] font-light tracking-wide italic">
-                "Her gün seni daha çok seviyorum..."
-              </p>
-              
-            </div>
-          </motion.div>
+          
         </motion.div>
 
         {/* Dekoratif Yüzen Kalpler */}

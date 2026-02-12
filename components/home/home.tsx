@@ -20,9 +20,11 @@ export default function Home() {
       {/* Main content */}
       <HeroSection />
       <PhotoGallery />
+
       <InteractiveLoveCard />
       <InteractiveLoveButton />
       <Footer />
     </main>
   );
 }
+

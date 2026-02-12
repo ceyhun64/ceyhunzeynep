@@ -39,6 +39,21 @@ export const HeroSection = () => {
     };
   }, []);
 
+  // Memoize stars to prevent recreation
+  const stars = useMemo(
+    () =>
+      [...Array(120)].map((_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.6 + 0.2,
+        duration: Math.random() * 3 + 2,
+        delay: Math.random() * 5,
+      })),
+    [],
+  );
+
   // Memoize particles to prevent recreation
   const particles = useMemo(
     () =>
@@ -61,8 +76,37 @@ export const HeroSection = () => {
       style={{ opacity, scale }}
       className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 bg-gradient-to-b from-[#0a0505] via-[#0d0808] to-[#0a0505]"
     >
+      {/* Starfield Background */}
+      {isMounted && (
+        <div className="absolute inset-0 z-0">
+          {stars.map((star) => (
+            <motion.div
+              key={star.id}
+              className="absolute rounded-full bg-white pointer-events-none"
+              style={{
+                left: `${star.x}%`,
+                top: `${star.y}%`,
+                width: `${star.size}px`,
+                height: `${star.size}px`,
+              }}
+              initial={{ opacity: star.opacity }}
+              animate={{
+                opacity: [star.opacity, star.opacity * 0.3, star.opacity],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: star.duration,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: star.delay,
+              }}
+            />
+          ))}
+        </div>
+      )}
+
       {/* Ambient Background Layers */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-[1]">
         <motion.div
           className="absolute inset-0"
           animate={{
@@ -88,7 +132,7 @@ export const HeroSection = () => {
         particles.map((particle) => (
           <motion.div
             key={particle.id}
-            className="absolute text-[#b33752]/15 pointer-events-none will-change-transform"
+            className="absolute text-[#b33752]/15 pointer-events-none will-change-transform z-[2]"
             initial={{
               x: `${particle.x}%`,
               y: `${particle.y}vh`,
@@ -117,7 +161,7 @@ export const HeroSection = () => {
 
       {/* Film Grain Texture */}
       <div
-        className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none z-[1]"
+        className="absolute inset-0 opacity-[0.03] mix-blend-overlay pointer-events-none z-[3]"
         style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
         }}

@@ -14,7 +14,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "Zeynep❤️Ceyhun - Sevgililer Günü",
-  description: "Sevgililer günümüz kutlu olsun yavrum!",
+  description: "Sevgililer günümüz kutlu olsun yavrum💋",
 };
 
 export default function RootLayout({
