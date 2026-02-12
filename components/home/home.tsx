@@ -8,10 +8,11 @@ import { Footer } from "./footer";
 import { FloatingHearts } from "@/components/animations/floatingHearts";
 import { ParticleEffect } from "@/components/animations/particleEffect";
 import { GlowingOrbs } from "@/components/animations/glowingOrbs";
+import GorillaChaseGame from "./gorillaChaseGame";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-[#1a0a0f] overflow-hidden">
+    <main className="relative min-h-screen bg-[#0a0005] overflow-hidden">
       {/* Background animations */}
       <FloatingHearts />
       <ParticleEffect />
@@ -21,10 +22,12 @@ export default function Home() {
       <HeroSection />
       <PhotoGallery />
 
+      {/* Yeni Oyun Bölümü */}
+      <GorillaChaseGame />
+
       <InteractiveLoveCard />
       <InteractiveLoveButton />
       <Footer />
     </main>
   );
 }
-
