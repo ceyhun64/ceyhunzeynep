@@ -208,20 +208,7 @@ export const PhotoGallery = () => {
                 )}
 
                 {/* Info overlay */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: hoveredPhoto === photo.id ? 1 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-6 z-10"
-                >
-                  <h3 className="text-xl font-bold text-white mb-1">
-                    {photo.title}
-                  </h3>
-                  <div className="flex items-center gap-2 text-[#d4af37] text-sm">
-                    <div className="w-1 h-1 rounded-full bg-[#d4af37]" />
-                    <span>{photo.location}</span>
-                  </div>
-                </motion.div>
+              
 
                 {/* Number badge */}
                 <div className="absolute top-4 right-4 w-10 h-10 rounded-lg bg-black/30 backdrop-blur-sm border border-white/10 flex items-center justify-center z-20">
